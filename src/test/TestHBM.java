@@ -11,6 +11,5 @@ public class TestHBM {
 
 		HibernateUtil.getSessionFactory().openSession().close();
 	}
-	
 
 }
