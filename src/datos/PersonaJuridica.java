@@ -8,8 +8,8 @@ public class PersonaJuridica extends Cliente {
 
 	}
 
-	public PersonaJuridica(String razonSocial, String cuit) {
-		super();
+	public PersonaJuridica(String nroCliente, String razonSocial, String cuit) {
+		super(nroCliente);
 		this.razonSocial = razonSocial;
 		this.cuit = cuit;
 	}

@@ -7,28 +7,31 @@ import datos.Cliente;
 
 public class ClienteABM {
 	private static ClienteABM clienteABM;
-	
-	private ClienteABM()
-	{
-		
+
+	private ClienteABM() {
+
 	}
 
-	public static ClienteABM getInstance()
-	{
-		
-		if(clienteABM == null)
+	public static ClienteABM getInstance() {
+
+		if (clienteABM == null)
 			clienteABM = new ClienteABM();
-		
+
 		return clienteABM;
 	}
 
+	// ----- ABM ----------
+	public int agregar(Cliente c) {
+		return ClienteDao.agregar(c);
+	}
+
+	// ------- Querys -------
 	public Cliente traer(int idCliente) {
 
 		return ClienteDao.traer(idCliente);
 	}
-	
-	public List<Cliente> traer()
-	{
+
+	public List<Cliente> traer() {
 		return ClienteDao.traer();
 	}
 }

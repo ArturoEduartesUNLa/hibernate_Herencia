@@ -21,11 +21,29 @@ public class ClienteDao {
 		tx = session.beginTransaction();
 	}
 
-	private void manejaExcepcion(HibernateException he) throws HibernateException {
+	private static void manejaExcepcion(HibernateException he) throws HibernateException {
 		tx.rollback();
 		throw new HibernateException("ERROR en la capa de acceso a datos", he);
 	}
 
+	// ------------ ABM ------------
+	public static int agregar(Cliente c) {
+		int idC = 0;
+		try {
+			iniciaOperacion();
+			idC = (int) session.save(c);
+			tx.commit();
+
+		} catch (HibernateException he) {
+			manejaExcepcion(he);
+			throw he;
+		} finally {
+			session.close();
+		}
+		return idC;
+	}
+
+	// ----------- Querys ------------
 	public static Cliente traer(int idCliente) {
 		Cliente objeto = null;
 		try {
